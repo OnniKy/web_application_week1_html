@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My test page</title>
+  </head>
+
+  <script type="text/javascript">
+    var addButton;
+    var removeButton;
+
+    function addText() {
+      addButton = document.getElementById("add-comment");
+      removeButton = document.getElementById("remove-comments");
+      addButton.onclick = function () {
+        const ul = document.getElementById("list-div");
+        var li = document.createElement("li");
+        li.append(document.getElementById("textArea").value);
+
+        ul.appendChild(li);
+      };
+      removeButton.onclick = function () {
+        confirm("Remove all items from the list?");
+        var ul = document.getElementById("list-div");
+        while (ul.firstChild) ul.removeChild(ul.firstChild);
+      };
+    }
+  </script>
+  <body onload="addText()">
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+
+    <h1>Hello World!</h1>
+    <table>
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Meal1</td>
+          <td>6,99€</td>
+        </tr>
+        <tr>
+          <td>Meal2</td>
+          <td>14,69€</td>
+        </tr>
+        <tr>
+          <td>Meal3</td>
+          <td>17,50€</td>
+        </tr>
+        <tr>
+          <td>Meal4</td>
+          <td>18,60€</td>
+        </tr>
+        <tr>
+          <td>Meal5</td>
+          <td>6,50€</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="list-div">
+      <ul id="tasks-list"></ul>
+    </div>
+    <div>
+      <textarea id="textArea" name="textArea" rows="4" cols="50"></textarea>
+    </div>
+
+    <div>
+      <button id="add-comment">Add</button>
+      <button id="remove-comments">Remove</button>
+    </div>
+  </body>
+</html>
